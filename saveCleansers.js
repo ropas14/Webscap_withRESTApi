@@ -18,13 +18,20 @@ var CleanserSchema = new Schema({
    ingredients: Array,
    Corcerns: Array,
 });
+
 // Compile model from schema
-var requiredData = mongoose.model('FacialCleansers', CleanserSchema);
-exports.saveData = function(item) {
-   var data = new requiredData(item);
-   var promise = data.save();
-   return promise;
+var requiredData =module.exports= mongoose.model('FacialCleansers', CleanserSchema );
+module.exports.saveData = function (item) {
+       var data=new requiredData(item);
+       
+       var promise = data.save();
+       return promise;
 }
-exports.closeConnection = function() {
-   db.close();
+module.exports.closeConnection= function () { 
+       db.close();
+
+	   
+//return data
+module.exports.getAllCleansers = (callback, limit) => {
+	requiredData.find(callback).limit(limit);
 }
